@@ -25,6 +25,18 @@ const router = new Router(function () {
    * This will only be two single lines
    * If you did this right, you should see the recipe cards just like last lab
    */
+
+  let recCard = document.getElementsByClassName('section--recipe-cards')[0];
+  let recCardExp = document.getElementsByClassName('section--recipe-expand');
+  let size = recCardExp.size;
+
+  recCard.classList.add('shown');
+  recCard.classList.remove('hidden');
+
+  for(let iterator = 0; iterator < size; iterator++){
+    recCardExp.classList.remove('shown');
+  }
+
 });
 
 window.addEventListener('DOMContentLoaded', init);
@@ -44,6 +56,9 @@ async function init() {
   bindShowMore();
   bindEscKey();
   bindPopstate();
+
+  if (window.location.hash.slice(1) == '') window.location.hash.slice(1) = 'home';
+  router.navigate(window.location.hash.slice(1));
 }
 
 /**
