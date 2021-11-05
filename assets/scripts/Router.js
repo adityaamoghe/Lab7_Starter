@@ -54,18 +54,39 @@ export class Router {
     /**
      * TODO - Part 1 - Step 4
      * Now, we are going to call the functions that we stored earlier based on 
-     * what page is being requested. For this function:
-     * 
-     *  1. First, check to see if the function exists, if it doesn't log an error
-     *     and return out of the function. 'this' is a global variable, so you can 
-     *     check to see if it exists nearly the same way you assigned it
-     *  2. Create a variable called hash. If page == 'home' set hash to be an empty
-     *     string, if page is anything else set it to be the string '#' + page, e.g.
-     *     '#ghostCookies'
-     *  3. Next, if statePopped is false and window.location.hash does NOT match the
-     *     hash that you just made, use history.pushState() to add the current state
-     *     and URL + hash to history
-     *  4. Finally, call the stored function for the given page
+     * what page is being requested. 
      */
+
+    /*First, check to see if the function exists, if it doesn't log an error
+      and return out of the function. 'this' is a global variable, so you can 
+      check to see if it exists nearly the same way you assigned it */
+
+    if(!this[page]){
+        console.log(`Error`);
+        return;
+    }
+
+    /*Create a variable called hash. If page == 'home' set hash to be an empty
+       string, if page is anything else set it to be the string '#' + page, e.g.
+       '#ghostCookies' */
+    
+    let hash;
+    if(page == 'home'){hash = '';}
+    else{hash = '#' + page;}
+
+    /* Next, if statePopped is false and window.location.hash does NOT match the
+    hash that you just made, use history.pushState() to add the current state
+    and URL + hash to history */
+
+    if(window.location.hash && statePopped != hash){
+      history.pushState({page}, "", window.location + hash); 
+    }
+
+    /* Finally, call the stored function for the given page */
+
+    this[page]();
+
+
+
   }
 }
