@@ -49,9 +49,6 @@ async function init() {
   bindEscKey();
   bindPopstate();
 
-  let p = window.location.hash.slice(1)
-  if (p == '') p = 'home';
-  router.navigate(p);
 }
 
 /**
@@ -121,7 +118,7 @@ function createRecipeCards() {
     router.addPage(page, function() {
       document.querySelector('.section--recipe-cards').classList.remove('shown');
       document.querySelector('.section--recipe-expand').classList.add('shown');
-      document.querySelector('recipe-expand').data = recipeData[recipes[0]];
+      document.querySelector('recipe-expand').data = recipeData[recipes[0+itr]];
     });
 
     bindRecipeCard(recipeCard, page);
@@ -185,7 +182,7 @@ function bindEscKey() {
    * page. This will let us go back to the home page from the detailed page.
    */
 
-  document.addEventListener('keydown', e =>{
+  document.addEventListener('keydown', (e) =>{
     router.navigate('home');
   });
 
@@ -212,7 +209,7 @@ function bindPopstate() {
    * creating an infinite loop
    */
 
-   window.addEventListener('popstate', e =>{
+   window.addEventListener('popstate', (e) =>{
     if(e.state){router.navigate(e.state.page,true);}
     else{router.navigate('home',true);}
   });

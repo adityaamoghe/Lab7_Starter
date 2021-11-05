@@ -78,8 +78,8 @@ export class Router {
     hash that you just made, use history.pushState() to add the current state
     and URL + hash to history */
 
-    if(window.location.hash && statePopped != hash){
-      history.pushState({page}, "", window.location + hash); 
+    if(!statePopped && window.location.hash != hash){
+      history.pushState({page}, "", window.location.origin + hash); 
     }
 
     /* Finally, call the stored function for the given page */
