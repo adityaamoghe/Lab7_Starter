@@ -113,7 +113,7 @@ function createRecipeCards() {
     const recipeCard = document.createElement('recipe-card'); 
     recipeCard.data = recipeData[recipes[0+itr]];
 
-    if(i != 0 && i > 2){
+    if(itr != 0 && itr > 2){
       recipeCard.className = 'hidden';
     }
   
@@ -123,7 +123,7 @@ function createRecipeCards() {
       document.querySelector('.section--recipe-expand').classList.add('shown');
       document.querySelector('recipe-expand').data = recipeData[recipes[0]];
     });
-    
+
     bindRecipeCard(recipeCard, page);
     document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard);
   
