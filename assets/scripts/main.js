@@ -1,6 +1,6 @@
 // main.js
 
-import { Router } from './router.js';
+import { Router } from './Router.js';
 
 const recipes = [
   'https://introweb.tech/assets/json/ghostCookies.json',
@@ -28,7 +28,7 @@ const router = new Router(function () {
 
   let recCard = document.getElementsByClassName('section--recipe-cards')[0];
   let recCardExp = document.getElementsByClassName('section--recipe-expand');
-  let size = recCardExp.size;
+  let size = recCardExp.size();
 
   recCard.classList.add('shown');
   recCard.classList.remove('hidden');
@@ -57,8 +57,9 @@ async function init() {
   bindEscKey();
   bindPopstate();
 
-  if (window.location.hash.slice(1) == '') window.location.hash.slice(1) = 'home';
-  router.navigate(window.location.hash.slice(1));
+  let p = window.location.hash.slice(1)
+  if (p == '') p = 'home';
+  router.navigate(p);
 }
 
 /**
