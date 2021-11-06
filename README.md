@@ -2,4 +2,4 @@
 
 Aditya Moghe - A15963476
 
-"Github-Pages URL goes here..."
+https://adityaamoghe.github.io/Lab7_Starter/
