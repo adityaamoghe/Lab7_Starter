@@ -116,7 +116,7 @@ async function fetchRecipes() {
    * lab
    */
 
-function createRecipeCards() {
+function createRecipeCards() { 
   let size = recipes.length;
   for(let itr = 0; itr < size; itr++){
     const recipeCard = document.createElement('recipe-card'); 
