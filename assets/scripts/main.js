@@ -120,17 +120,17 @@ function createRecipeCards() {
   let size = recipes.length;
   for(let itr = 0; itr < size; itr++){
     const recipeCard = document.createElement('recipe-card'); 
-    recipeCard.data = recipeData[recipes[0+itr]];
+    recipeCard.data = recipeData[recipes[itr]];
 
     if(itr != 0 && itr > 2){
       recipeCard.className = 'hidden';
     }
   
-    const page = recipeData[recipes[0+itr]]['page-name'];
+    const page = recipeData[recipes[itr]]['page-name'];
     router.addPage(page, function() {
       document.querySelector('.section--recipe-cards').classList.remove('shown');
       document.querySelector('.section--recipe-expand').classList.add('shown');
-      document.querySelector('recipe-expand').data = recipeData[recipes[0+itr]];
+      document.querySelector('recipe-expand').data = recipeData[recipes[itr]];
     });
 
     bindRecipeCard(recipeCard, page);
