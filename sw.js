@@ -55,7 +55,7 @@ self.addEventListener('fetch', function (event) {
    * TODO - Part 2 Step 4
    * Create a function as outlined above
    */
-   /*event.respondWith(
+   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
         if (response) {
@@ -64,8 +64,8 @@ self.addEventListener('fetch', function (event) {
         return fetch(event.request); //Failed promise?
       }
     )
-  );*/
-  event.respondWith(
+  );
+  /*event.respondWith(
     caches.match(event.request)
       .then(function(response) {
         // Cache hit - return response
@@ -95,5 +95,5 @@ self.addEventListener('fetch', function (event) {
           }
         );
       })
-    );
+    );*/
 });
